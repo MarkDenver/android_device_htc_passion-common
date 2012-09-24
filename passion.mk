@@ -42,6 +42,22 @@ PRODUCT_PACKAGES := \
     librs_jni \
     com.android.future.usb.accessory
 
+# Tell compiler where our prebuilt folder is
+DEVICE_PREBUILT := device/htc/passion-common/prebuilt
+
+# Tell compiler to build Superuser.apk
+PRODUCT_PACKAGES := \
+        Superuser
+
+# Include busybox and su binaries
+PRODUCT_COPY_FILES += \
+        $(DEVICE_PREBUILT)/xbin/busybox:system/xbin/busybox \
+        $(DEVICE_PREBUILT)/xbin/su:system/xbin/su
+
+# This is a script to automatically symlink busybox and su binaries on boot (the code for 91-busybox_linkage.sh is below)
+PRODUCT_COPY_FILES += \
+        $(DEVICE_PREBUILT)/etc/init.d/91-busybox_linkage.sh:system/etc/inti.d/91-busybox_linkage.sh
+
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
