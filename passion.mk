@@ -51,8 +51,7 @@ PRODUCT_PACKAGES := \
 
 # Include busybox and su binaries
 PRODUCT_COPY_FILES += \
-        $(DEVICE_PREBUILT)/xbin/busybox:system/xbin/busybox \
-        $(DEVICE_PREBUILT)/xbin/su:system/xbin/su
+        $(DEVICE_PREBUILT)/xbin/su:system/bin/su
 
 # This is a script to automatically symlink busybox and su binaries on boot (the code for 91-busybox_linkage.sh is below)
 PRODUCT_COPY_FILES += \
